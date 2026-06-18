@@ -211,7 +211,7 @@ def extract_features(row):
 # ======================
 
 df = pd.read_csv(
-    r"C:\Users\DTC\Downloads\realtime_string_features_train_cleaned.csv"
+    r"C:\Users\DTC\Downloads\realtime_string_features_train_filtered.csv"
 )
 
 print("=== [SYSTEM] Đang tiến hành trích xuất đặc trưng nâng cấp cho tập Train... ===")
