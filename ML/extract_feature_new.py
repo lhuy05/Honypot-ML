@@ -8,7 +8,7 @@ from urllib.parse import unquote_plus
 # ==========================================
 # CẤU HÌNH ĐƯỜNG DẪN FILE
 # ==========================================
-INPUT_FILE_PATH = r"C:\Users\DTC\Desktop\Krawl-main\Nginx\nginx-1.31.1\logs\access.log"
+INPUT_FILE_PATH = r"C:\Users\DTC\Desktop\Krawl-main\Nginx\nginx-1.31.1\logs\access.log" #Tự chỉnh lại path
 OUTPUT_FILE_PATH = "realtime_features_outputnew1.csv"
 
 # ======================
