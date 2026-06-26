@@ -1,14 +1,14 @@
-import os
-import time
-import re
-import csv
-import pandas as pd
-from urllib.parse import unquote_plus
+import os #Kiểm tra file
+import time #Tạm dừng
+import re   #Phát hiện các keyword
+import csv  #Tạo csv
+import pandas as pd #xử lý dữ liệu dạng bảng
+from urllib.parse import unquote_plus #Giải mã URL
 
 # ==========================================
 # CẤU HÌNH ĐƯỜNG DẪN FILE
 # ==========================================
-INPUT_FILE_PATH = r"C:\Users\DTC\Desktop\Honypot-ML\Krawl-main\Nginx\nginx-1.31.1\logs\access.log" #Tự chỉnh lại path
+INPUT_FILE_PATH = r"C:\Users\DTC\Desktop\Krawl-main\Nginx\nginx-1.31.1\logs\access.log" #Tự chỉnh lại path
 OUTPUT_FILE_PATH = "realtime_features_outputnew1.csv"
 
 # ======================
@@ -120,7 +120,7 @@ def count_js_brackets(text):
 
 
 # ==========================================
-# FEATURE EXTRACTION (Đã thêm 3 cột đặc trị XSS/SQLi và xử lý giải mã Hex)
+# FEATURE EXTRACTION (3 cột đặc trị XSS/SQLi và xử lý giải mã Hex)
 # ==========================================
 def extract_features_dict(method, path, query, body):
     method = str(method).upper()
@@ -189,7 +189,7 @@ def watch_and_write_features(input_path, output_path):
             writer.writeheader()
 
     while not os.path.exists(input_path):
-        time.sleep(1)
+        time.sleep(1) #Không đ chương trình chạy liên tục khi k có log mới sẽ cho ngủ 1s
 
     current_request = {}
 

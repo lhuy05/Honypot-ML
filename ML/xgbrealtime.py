@@ -17,14 +17,14 @@ try:
 
     # Lấy danh sách nhãn tương ứng từ thuộc tính tùy biến
     classes = model.custom_classes_
-    normal_idx = list(classes).index("Normal")
+
 
     print("=== [SYSTEM] Load mô hình thành công. Đang đợi request mới... ===\n")
 except Exception as e:
     print(f"=== [ERROR] Lỗi load mô hình: {e} ===")
     exit()
 
-# ĐÃ ĐỒNG BỘ: Cập nhật chính xác 18 cột đặc trưng theo đúng mô hình XGBoost yêu cầu
+# ĐÃ ĐỒNG BỘ: Cập nhật chính xác 19 cột đặc trưng theo đúng mô hình XGBoost yêu cầu
 feature_headers = [
     "method",
     "path_length",
@@ -32,9 +32,9 @@ feature_headers = [
     "body_length",
     "slash_count",
     "dot_count",
-    "path_special_chars",   # Cột mới tách 1
-    "query_special_chars",  # Cột mới tách 2
-    "body_special_chars",   # Cột mới tách 3
+    "path_special_chars",
+    "query_special_chars",
+    "body_special_chars",
     "digit_ratio",
     "percent_encoding_count",
     "has_sql_keyword",
@@ -97,7 +97,7 @@ def watch_and_display():
                 if parts[0].lower() in ["method", "method_map"] or len(parts) < len(feature_headers):
                     continue
 
-                # Ép dữ liệu chuỗi thô của cả 18 cột về kiểu số float dựa theo map zip
+                # Ép dữ liệu chuỗi thô của cả 19 cột về kiểu số float dựa theo map zip
                 features_dict = {}
                 for idx, col_name in enumerate(feature_headers):
                     features_dict[col_name] = float(parts[idx])
